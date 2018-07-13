@@ -7,7 +7,7 @@ module GeoIp
   class InvalidPrecissionError < ArgumentError; end
   class InvalidIpError < ArgumentError; end
 
-  SERVICE_URL = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php'
+  SERVICE_URL = 'http://ip.taobao.com/service/getIpInfo.php'
   class << self
     attr_accessor :timeout, :fallback_timeout
 
@@ -45,15 +45,15 @@ module GeoIp
     private
 
     def to_j(hash, options={})
-      h = {ret: hash['ret'], start: hash['start'], end: hash['end'], country: hash['country'], province: hash['province'], city: hash['city'],\
-         district: hash['district'], isp: hash['isp'], type: hash['type'], desc: hash['desc']}
+      h = {code: hash['code'], ip: hash['data']['ip'], country: hash['data']['country'], area: hash['data']['area'], region: hash['data']['region'], city: hash['data']['city'],\
+         isp: hash['data']['isp'], country_id: hash['data']['isp']}
       case options[:precision]
       when :country
         h = {country: hash['country']} # only return country
       when :province
-        h = {country: hash['country'], province: hash['province']} # only country,province
+        h = {country: hash['country'], region: hash['region']} # only country,province
       when :city
-        h = {country: hash['country'], province: hash['province'],city: hash['city']} #  only country,province, city
+        h = {country: hash['country'], region: hash['region'],city: hash['city']} #  only country,province, city
       else
         h # return all
       end

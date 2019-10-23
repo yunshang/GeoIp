@@ -9,16 +9,12 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'GeoIp'
+gem 'GeoIp', :git => 'git://github.com/yunshang/GeoIp.git'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install GeoIp
 
 ## Usage
 

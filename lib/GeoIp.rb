@@ -7,7 +7,7 @@ module GeoIp
   class InvalidPrecissionError < ArgumentError; end
   class InvalidIpError < ArgumentError; end
 
-  SERVICE_URL = 'http://ip.taobao.com/service/getIpInfo.php'
+  SERVICE_URL = 'http://ip.taobao.com/service/getIpInfo2.php'
   class << self
     attr_accessor :timeout, :fallback_timeout
 

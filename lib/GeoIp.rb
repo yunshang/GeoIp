@@ -45,15 +45,15 @@ module GeoIp
     private
 
     def to_j(hash, options={})
-      h = {code: hash[:code], ip: hash[:ip], country: hash[:country], area: hash[:area], region: hash[:region], city: hash[:city],\
-         isp: hash[:isp], country_id: hash[:country_id]}
+      h = {ip: hash['data']['ip'], country: hash['data']['country'], area: hash['data']['area'], region: hash['data']['region'], city: hash['data']['city'],\
+         isp: hash['data']['isp'], country_id: hash['data']['country_id']}
       case options[:precision]
       when :country
-        h = {country: hash[:country]} # only return country
+        h = {country: h['country']} # only return country
       when :province
-        h = {country: hash[:country], region: hash[:region]} # only country,province
+        h = {country: h['country'], region: h['region']} # only country,province
       when :city
-        h = {country: hash[:country], region: hash[:region],city: hash[:city]}
+        h = {country: h['country'], region: h['region'],city: h['city']} #  only country,province, city
       else
         h # return all
       end

@@ -49,11 +49,11 @@ module GeoIp
          isp: hash['data']['isp'], country_id: hash['data']['country_id']}
       case options[:precision]
       when :country
-        h = {country: h['country']} # only return country
+        h = {country: h[:country]} # only return country
       when :province
-        h = {country: h['country'], region: h['region']} # only country,province
+        h = {country: h[:country], region: h[:region]} # only country,province
       when :city
-        h = {country: h['country'], region: h['region'],city: h['city']} #  only country,province, city
+        h = {country: h[:country], region: h[:region],city: h[:city]} #  only country,province, city
       else
         h # return all
       end
